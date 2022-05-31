@@ -11,11 +11,6 @@ const INITIAL_STATE = {
 
 export function AddtaskReducer (state = [], action = {}) {
   switch (action.type) {
-    case actionTypes.ADDTASK_LOAD: {
-      const newData = {...state.tasklist, status: action.status}
-      const requested = Object.assign({}, state, { tasklist: newData })
-      return requested
-    }
     case actionTypes.ADDTASK_SUCCESS: {
       const newData = {...state.tasklist, status: action.status, data: action.taskList}
       const successful = Object.assign({}, state, {tasklist: newData})

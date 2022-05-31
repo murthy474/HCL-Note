@@ -1,10 +1,4 @@
 import * as actionType from './action_types'
-
-export function addtaskload () {
-    return {
-      type: actionType.ADDTASK_LOAD
-    }
-  }
   
   export function addtasksuccess (taskList) {
     return {
