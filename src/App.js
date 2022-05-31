@@ -20,6 +20,7 @@ const App = (props) => {
   const [buttonBool,setButtonbool] = useState(false)
   const [editIndex,setEditIndex] = useState('')
   const details = props.addTaks.tasklist && props.addTaks.tasklist.data
+  // we can get the data by using getItem ===> localStorage.getItem('Key');
   const entryData = () =>{
     const obj ={
       noteTitle:title,
@@ -50,12 +51,14 @@ const App = (props) => {
     array = [...list,typedData]
     setList(array)
     props.actions.addtasksuccess(array)
+    //we can set the data by using setItem localStorage.setItem('Key', 'dat=list');
     statenullFun()
   }
   const handleUpdate = () =>{
     list[editIndex].noteTitle = title
     list[editIndex].noteDesp = descp
     props.actions.addtasksuccess(list) // i'm using redux to store the data that's way i'm not using local storage concept 
+   //we can set the data by using setItem localStorage.setItem('Key', 'dat=list');
     setList(list)
     setButtonbool(false)
     setEditIndex('')
@@ -72,6 +75,7 @@ const App = (props) => {
   const handleClickDelete = (i) =>{
     list.splice(i, 1)
     props.actions.addtasksuccess(list) 
+    //we can set the data by using setItem localStorage.setItem('Key', 'dat=list');
     setList(list)
     setSearchValueRender(false)
   }
@@ -81,7 +85,7 @@ const App = (props) => {
   }
   
   const handleSearchListofItems = () =>{
-    const details = list.filter(s => s.noteTitle.includes(searchValue))
+    const details = list.filter(s => s.noteTitle.includes(searchValue)) // search functionality 
     return details && details.map((data,i)=>(
       <div key={i} style={{width:'450px',alignItems:'center',display:'flex',flexDirection:'column', border: '1px solid red',backgroundColor: '#949294'}}>
         <p>Note Tile : {data.noteTitle }</p>
