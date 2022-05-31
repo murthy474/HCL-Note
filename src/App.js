@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { default as Actions } from './Redux/actions/index'
@@ -20,9 +20,6 @@ const App = (props) => {
   const [buttonBool,setButtonbool] = useState(false)
   const [editIndex,setEditIndex] = useState('')
   const details = props.addTaks.tasklist && props.addTaks.tasklist.data
-  useEffect(()=>{
-    setList([])
-  },[])
   const entryData = () =>{
     const obj ={
       noteTitle:title,
@@ -58,7 +55,7 @@ const App = (props) => {
   const handleUpdate = () =>{
     list[editIndex].noteTitle = title
     list[editIndex].noteDesp = descp
-    props.actions.addtasksuccess(list)
+    props.actions.addtasksuccess(list) // i'm using redux to store the data that's way i'm not using local storage concept 
     setList(list)
     setButtonbool(false)
     setEditIndex('')
@@ -74,7 +71,7 @@ const App = (props) => {
   }
   const handleClickDelete = (i) =>{
     list.splice(i, 1)
-    props.actions.addtasksuccess(list)
+    props.actions.addtasksuccess(list) 
     setList(list)
     setSearchValueRender(false)
   }
